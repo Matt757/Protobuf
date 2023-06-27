@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "dgSpecHash": "n5Kc/lI1z2maDWdvspT2qdK5HjXwwC4juXOdk30TYvZPNwZ5dZDjhBvkOWyB3OjwK2+dScHO5VUBa8Ts30Si4Q==",
+  "success": true,
+  "projectFilePath": "D:\\Programare\\C#\\Protobuf\\Protobuf\\Protobuf.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Matei\\.nuget\\packages\\google.protobuf\\3.23.2\\google.protobuf.3.23.2.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\protobuf-net\\3.2.26\\protobuf-net.3.2.26.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\protobuf-net.core\\3.2.26\\protobuf-net.core.3.2.26.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\serilog\\3.0.0\\serilog.3.0.0.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\system.collections.immutable\\7.0.0\\system.collections.immutable.7.0.0.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\5.0.0\\microsoft.windowsdesktop.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\5.0.0\\microsoft.aspnetcore.app.ref.5.0.0.nupkg.sha512",
+    "C:\\Users\\Matei\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}
