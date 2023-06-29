@@ -44,7 +44,6 @@ namespace Protobuf.Consensus
             switch (m.Type)
             {
                 case Message.Types.Type.EpPropose:
-                    // upon event ⟨ ep, Propose | v ⟩ do
                     tmpVal = m.EpPropose.Value;
                     msgQueue.Writer.WriteAsync(new Message
                     {
@@ -72,13 +71,14 @@ namespace Protobuf.Consensus
                                 ValTs = m.PlDeliver.Message.EpInternalState.ValueTimestamp,
                                 Value = m.PlDeliver.Message.EpInternalState.Value
                             };
+                            Console.WriteLine("Number of states: " + states.Count + " vs Number of processes: " + processes.Count);
 
                             if (states.Count > processes.Count / 2)
                             {
                                 EpState hS = Min();
                                 if (hS != null && hS.Value != null && hS.Value.Defined)
                                 {
-                                    Console.WriteLine("this is the min val:" + tmpVal);
+                                    Console.WriteLine("this is the val from the process with the highest rank (lowest value):" + tmpVal);
                                     tmpVal = hS.Value;
                                 }
                                 states = new Dictionary<string, EpState>();
@@ -216,10 +216,6 @@ namespace Protobuf.Consensus
                 default:
                     throw new Exception("Message not supported");
             }
-        }
-
-        public void Destroy()
-        {
         }
 
         private EpState Min()

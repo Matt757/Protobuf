@@ -50,6 +50,7 @@ namespace Protobuf.Consensus
             abstractions[aId + ".beb"] = new BestEffortBroadcast(msgQueue, processes, aId + ".beb");
             abstractions[aId + ".pl"] = pl.CopyWithParentId(aId);
             abstractions[aId + ".beb.pl"] = pl.CopyWithParentId(aId + ".beb");
+            Console.WriteLine("I added the EpochConsensus to the abstractions");
         }
 
         private string GetEpId()
@@ -63,6 +64,8 @@ namespace Protobuf.Consensus
             {
                 case Message.Types.Type.UcPropose:
                     val = m.UcPropose.Value;
+                    Console.WriteLine("Received message to propose a value: " + m);
+                    Console.WriteLine("Proposed value: " + val);
                     break;
                 case Message.Types.Type.EcStartEpoch:
                     newTs = m.EcStartEpoch.NewTimestamp;
@@ -132,10 +135,6 @@ namespace Protobuf.Consensus
                     }
                 });
             }
-        }
-
-        public void Destroy()
-        {
         }
     }
 }

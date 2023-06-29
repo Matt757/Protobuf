@@ -170,10 +170,5 @@ namespace Protobuf.Consensus
             alive = new Dictionary<string, ProcessId>();
             StartTimer(delay);
         }
-
-        public void Destroy()
-        {
-            timer.Dispose();
-        }
     }
 }

@@ -30,15 +30,12 @@ namespace Protobuf
 
         public static System CreateSystem(Message m, string owner, string hubAddress, int index)
         {
-            Console.WriteLine("Creating system {0}", m.SystemId);
             ProcessId ownProcess = null;
             foreach (var p in m.ProcInitializeSystem.Processes)
             {
-                Console.WriteLine("process in m:" + p);
                 if (p.Owner == owner && p.Index == index)
                 {
                     ownProcess = p;
-                    Console.WriteLine("own process: " + ownProcess);
                     break;
                 }
             }
@@ -75,7 +72,7 @@ namespace Protobuf
 
                     if (!abstractions.TryGetValue(m.ToAbstractionId, out handler))
                     {
-                        Console.WriteLine($"No handler defined for {m.Type}");
+                        Console.WriteLine($"No handler defined for {m.ToAbstractionId}");
                         continue;
                     }
 
@@ -108,10 +105,6 @@ namespace Protobuf
         public void Destroy()
         {
             Console.WriteLine($"Destroying system {systemId}");
-            foreach (var a in abstractions.Values)
-            {
-                a.Destroy();
-            }
         }
 
         public void AddMessage(Message m)

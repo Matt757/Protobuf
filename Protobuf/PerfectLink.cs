@@ -80,7 +80,6 @@ namespace Protobuf
 
         private void Send(Message m)
         {
-            Console.WriteLine("Port " + _port + " is sending message " + m);
             var mToSend = new Message
             {
                 SystemId = (_systemId == null) ? "" : _systemId,
@@ -101,7 +100,7 @@ namespace Protobuf
             {
                 address = $"{m.PlSend.Destination.Host}:{m.PlSend.Destination.Port}";
             }
-            Console.WriteLine("I send message to: " + address);
+            Console.WriteLine("Port " + _port + " is sending message " + m + " to " + address);
 
             Util.Send(address, data);
         }
@@ -109,10 +108,6 @@ namespace Protobuf
         public Message Parse(byte[] data)
         {
             return Message.Parser.ParseFrom(data);
-        }
-
-        public void Destroy()
-        {
         }
     }
 }

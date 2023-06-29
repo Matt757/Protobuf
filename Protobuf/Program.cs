@@ -38,7 +38,6 @@ namespace Protobuf
                     },
                 },
             };
-            Console.WriteLine("Register: " + message);
 
             pl.Handle(message);
         }
@@ -68,7 +67,7 @@ namespace Protobuf
                     int portParam = args.Item2;
             
                     Register(pl, owner, indexParam, hubAddress);
-                    var listener = Util.Listen(host + ":" + portParam, portParam, (data) =>
+                    var listener = Util.Listen(host + ":" + portParam, (data) =>
                     {
                         try
                         {
@@ -110,7 +109,6 @@ namespace Protobuf
                                 case Message.Types.Type.ProcInitializeSystem:
                                     if (!systems.ContainsKey(message.SystemId))
                                     {
-                                        Console.WriteLine(indexParam);
                                         var s = System.CreateSystem(message.NetworkMessage.Message, owner, hubAddress,
                                             indexParam);
                                         s.RegisterAbstractions();

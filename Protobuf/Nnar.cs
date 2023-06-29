@@ -29,7 +29,6 @@ namespace Protobuf
 
         public void Handle(Message m)
         {
-            Console.WriteLine("Nnar is first");
             Message msgToSend = null;
             string aId = GetAbstractionId();
 
@@ -317,11 +316,6 @@ namespace Protobuf
             }
 
             return 0;
-        }
-
-        public void Destroy()
-        {
-            // Implement the Destroy method
         }
     }
 }

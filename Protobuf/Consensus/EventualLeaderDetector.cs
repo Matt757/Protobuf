@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Channels;
 using Main;
-using Protobuf;
 
 namespace Protobuf.Consensus
 {
@@ -51,11 +50,6 @@ namespace Protobuf.Consensus
             UpdateLeader();
         }
 
-        public void Destroy()
-        {
-            
-        }
-
         private void UpdateLeader()
         {
             ProcessId max = Util.GetMaxRank(alive);
@@ -65,7 +59,7 @@ namespace Protobuf.Consensus
                 throw new Exception("Could not determine the process with max rank");
             }
 
-            if (leader == null || Protobuf.Util.GetProcessKey(leader) != Protobuf.Util.GetProcessKey(max))
+            if (leader == null || Util.GetProcessKey(leader) != Util.GetProcessKey(max))
             {
                 leader = max;
                 msgQueue.Writer.WriteAsync(new Message

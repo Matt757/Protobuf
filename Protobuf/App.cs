@@ -19,7 +19,6 @@ namespace Protobuf
 
         public async void Handle(Message m)
         {
-            Console.WriteLine("App is first");
             Message msgToSend;
             switch (m.Type)
             {
@@ -179,10 +178,6 @@ namespace Protobuf
                     throw new InvalidOperationException("Message not supported");
             }
             await _msgQueue.Writer.WriteAsync(msgToSend);
-        }
-
-        public void Destroy()
-        {
         }
     }
 }

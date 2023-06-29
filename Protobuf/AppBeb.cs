@@ -21,7 +21,6 @@ namespace Protobuf
 
         public async void Handle(Message m)
         {
-            Console.WriteLine("AppBeb is first");
             switch (m.Type)
             {
                 case Message.Types.Type.BebBroadcast:
@@ -61,10 +60,6 @@ namespace Protobuf
                 default:
                     throw new InvalidOperationException("Message not supported");
             }
-        }
-
-        public void Destroy()
-        {
         }
     }
 }

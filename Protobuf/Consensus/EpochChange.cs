@@ -35,13 +35,13 @@ namespace Protobuf.Consensus
             {
                 case Message.Types.Type.EldTrust:
                     trusted = m.EldTrust.Process;
-                    HandleSelfTrusted();
+                    HandleSelfTrusted(m);
                     break;
                 case Message.Types.Type.PlDeliver:
                     switch (m.PlDeliver.Message.Type)
                     {
                         case Message.Types.Type.EcInternalNack:
-                            HandleSelfTrusted();
+                            HandleNack();
                             break;
                         default:
                             throw new Exception("Message not supported");
@@ -99,7 +99,7 @@ namespace Protobuf.Consensus
             }
         }
 
-        private void HandleSelfTrusted()
+        private void HandleNack()
         {
             if (Util.GetProcessKey(self) == Util.GetProcessKey(trusted))
             {
@@ -126,9 +126,32 @@ namespace Protobuf.Consensus
             }
         }
 
-        public void Destroy()
+        private void HandleSelfTrusted(Message m)
         {
-            
+            trusted = m.EldTrust.Process;
+            if (Util.GetProcessKey(self) == Util.GetProcessKey(trusted))
+            {
+                ts += processes.Count;
+                msgQueue.Writer.WriteAsync(new Message
+                {
+                    Type = Message.Types.Type.BebBroadcast,
+                    FromAbstractionId = id,
+                    ToAbstractionId = id + ".beb",
+                    BebBroadcast = new BebBroadcast
+                    {
+                        Message = new Message
+                        {
+                            Type = Message.Types.Type.EcInternalNewEpoch,
+                            FromAbstractionId = id,
+                            ToAbstractionId = id,
+                            EcInternalNewEpoch = new EcInternalNewEpoch
+                            {
+                                Timestamp = ts
+                            }
+                        }
+                    }
+                });
+            }
         }
     }
 }

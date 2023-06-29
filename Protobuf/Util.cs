@@ -107,9 +107,13 @@ namespace Protobuf
             }
         }
 
-        public static TcpListener Listen(string address, int port, Action<byte[]> handler)
+        public static TcpListener Listen(string address, Action<byte[]> handler)
         {
-            TcpListener listener = new TcpListener(IPAddress.Parse("127.0.0.1"), port);
+            string[] parts = address.Split(':');
+            string host = parts[0];
+            int port = int.Parse(parts[1]);
+
+            TcpListener listener = new TcpListener(IPAddress.Parse(host), port);
             listener.Start();
 
             Thread thread = new Thread(() =>
@@ -156,7 +160,6 @@ namespace Protobuf
             });
 
             thread.Start();
-            Console.WriteLine("I am out");
             return listener;
         }
     }
